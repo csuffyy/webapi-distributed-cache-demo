@@ -9,7 +9,7 @@ function TodoCtrl($scope) {
 
     if (Modernizr.webworkers) {
 
-        var worker = new Worker('warmup-worker.js');
+        var worker = new Worker('Scripts/warmup-worker.js');
 
         kendoConsole.log('warming up cache distribution member servers ...');
 

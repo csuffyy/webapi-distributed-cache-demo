@@ -7,6 +7,31 @@ function TodoCtrl($scope) {
     $.connection.hub.url = 'http://webapicachereplicateone.apphb.com/signalr';
     $.connection.hub.start();
 
+    if (Modernizr.webworkers) {
+
+        var worker = new Worker('warmup-worker.js');
+
+        kendoConsole.log('warming up cache distribution member servers ...');
+
+        worker.addEventListener('message', function (e) {
+
+            kendoConsole.log(e.data);
+
+        }, false);
+
+        worker.postMessage(
+            [
+                'http://webapicachereplicateone.apphb.com/api/warmup',
+                'http://webapicachereplicatetwo.apphb.com/api/warmup'
+            ]
+        );
+
+    } else {
+
+        $.get('http://webapicachereplicateone.apphb.com/api/warmup');
+        $.get('http://webapicachereplicatetwo.apphb.com/api/warmup');
+    }
+
     function onCacheNotification(cId, cacheMessage) {
 
         kendoConsole.log(cacheMessage);

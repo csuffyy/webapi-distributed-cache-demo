@@ -26,14 +26,14 @@
             <div ng-controller="TodoCtrl" ng-cloak>
                 <span>{{remaining()}} of {{todos.length}} remaining</span>
                 [ <a href="" ng-click="archive()">archive</a> ]
-                  <ul class="list-group">
-                      <li class="list-group-item" ng-repeat="todo in todos">
-                          <div class="input-group">
-                              <input type="checkbox" style="margin-right: 5px;" ng-model="todo.Done">
-                              <span class="done-{{todo.Done}}">{{todo.Text}}</span>
-                          </div>
-                      </li>
-                  </ul>
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat="todo in todos">
+                        <div class="input-group">
+                            <input type="checkbox" style="margin-right: 5px;" ng-model="todo.Done">
+                            <span class="done-{{todo.Done}}">{{todo.Text}}</span>
+                        </div>
+                    </li>
+                </ul>
                 <form ng-submit="addTodo()">
                     <div class="row">
                         <div class="col-lg-12">
@@ -58,13 +58,17 @@
 
     </div>
     <!-- /container -->
+
+    <script src="Scripts/jquery-2.1.0.min.js"></script>
+    <script src="Scripts/modernizr-2.7.2.min.js"></script>
+    <script src="http://cdn.kendostatic.com/2013.3.1119/js/kendo.all.min.js"></script>
+    <script src="Scripts/console.js"></script>
+    <script src="Scripts/bootstrap.min.js"></script>
+    <script src="Scripts/jquery.signalR-2.0.2.min.js"></script>
+    <script src="Scripts/hubs.js"></script>
+    <script src="Scripts/todo.js"></script>
+
 </body>
 
-<script src="Scripts/jquery-2.1.0.min.js"></script>
-<script src="http://cdn.kendostatic.com/2013.3.1119/js/kendo.all.min.js"></script>
-<script src="Scripts/console.js"></script>
-<script src="Scripts/bootstrap.min.js"></script>
-<script src="Scripts/jquery.signalR-2.0.2.min.js"></script>
-<script src="Scripts/hubs.js"></script>
-<script src="Scripts/todo.js"></script>
+
 </html>

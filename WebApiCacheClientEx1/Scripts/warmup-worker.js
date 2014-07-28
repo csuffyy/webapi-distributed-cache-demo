@@ -7,17 +7,18 @@ self.addEventListener('message', function(e) {
 
         for (var i = 0; i < msgData.length; i++) {
 
-            var postUrl = msgData[i];
+            var getUrl = msgData[i];
+            var oReq = new XMLHttpRequest();
 
-            $.get(postUrl).done(function (returnValue) {
+            oReq.open("get", getUrl, false);
+            oReq.send(null);
 
-                if (returnValue) {
-                    self.postMessage('A web worker just warmed up ' + postUrl + '.');
-                } else {
-                    self.postMessage('A problem was encountered trying to warm up ' + postUrl + '.');
-                }
+            if (oReq.responseText == 'true') {
+                self.postMessage('A web worker just warmed up ' + getUrl + '.');
+            } else {
+                self.postMessage('A problem was encountered trying to warm up ' + getUrl + '.');
+            }
 
-            });
         }
     }
 
